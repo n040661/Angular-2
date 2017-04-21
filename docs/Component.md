@@ -72,6 +72,8 @@ you should list it in the `declarations` field of that NgModule.
 
 The `changeDetection` property defines, whether the change detection will be checked every time or only when the component tells it to do so.
 
+![changeDetection](../images/changedetection.jpg)
+
 >**interpolation**
 
 Overrides the default encapsulation start and end delimiters (respectively `{{` and `}}`)
@@ -81,6 +83,8 @@ Overrides the default encapsulation start and end delimiters (respectively `{{` 
 >**viewProviders**
 
 Defines the set of injectable objects that are visible to its view DOM children.
+
+![viewProviders](../images/viewproviders.jpg)
 
 >**moduleId**
 
@@ -170,6 +174,12 @@ For animations to be available for use, animation state changes are placed withi
 When a trigger is created then it can be bound onto an element within the component's template via a property prefixed by an `@` symbol followed by trigger name and an expression that is used to determine the state value for that trigger.
 
     <div @myTriggerName="expression">...</div>
+
+### Animation Example
+
+![fade-in](../images/fadein.jpg)
+
+![fly-in](../images/flyin.jpg)
 
 
 
