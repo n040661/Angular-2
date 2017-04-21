@@ -49,7 +49,7 @@ Reattach the change detector to the change detector tree.
 
 This also marks OnPush ancestors as to be checked. This reattached change detector will be checked during the next change detection run.
 
-####Example
+#### Example
 
 ![reattach](../images/reattach.jpg)
 
