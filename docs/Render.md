@@ -94,7 +94,7 @@ The default Renderer implementation is `DomRenderer`. Also available is `WebWork
 	    abstract renderComponent(componentType: RenderComponentType): Renderer;
 	}
 
-##Version 4.0
+## Version 4.0
 
 ### RendererType2
 
