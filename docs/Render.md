@@ -29,7 +29,17 @@
 	    source: string;
 	}
 
-#### Renderer
+#### DirectRenderer [Use the `Renderer2` instead in version 4.0]
+
+	export interface DirectRenderer {
+	    remove(node: any): void;
+	    appendChild(node: any, parent: any): void;
+	    insertBefore(node: any, refNode: any): void;
+	    nextSibling(node: any): any;
+	    parentElement(node: any): any;
+	}
+
+#### Renderer [Use the `Renderer2` instead in version 4.0]
 
 - `selectRootElement` (selectorOrNode: string | any, debugInfo?: RenderDebugInfo): any
 
@@ -74,7 +84,7 @@
 
 ![Renderer](../images/renderer.jpg)
 
->**RootRenderer**
+>**RootRenderer** [Use `RendererFactory2` instead in version 4.0]
 
 If you are implementing a custom renderer, you must implement this interface.
 
@@ -83,3 +93,58 @@ The default Renderer implementation is `DomRenderer`. Also available is `WebWork
 	export declare abstract class RootRenderer {
 	    abstract renderComponent(componentType: RenderComponentType): Renderer;
 	}
+
+##Version 4.0
+
+### RendererType2
+
+	export interface RendererType2 {
+	    id: string;
+	    encapsulation: ViewEncapsulation;
+	    styles: (string | any[])[];
+	    data: {
+	        [kind: string]: any;
+	    };
+	}
+
+### RendererFactory2
+
+	export class RendererFactory2 {
+	    createRenderer(hostElement: any, type: RendererType2 | null): Renderer2;
+	}
+
+### RendererStyleFlags2
+
+	export declare enum RendererStyleFlags2 {
+	    Important = 1,
+	    DashCase = 2,
+	}
+
+### Renderer2
+
+This field can be used to store arbitrary data on this renderer instance.
+
+This is useful for renderers that delegate to other renderers.
+
+- [readonly] `data`: {[key: string]: any}
+- `destroy()`: void
+- `createElement`(name: string, namespace?: string | null): any
+- `createComment`(value: string): any
+- `createText`(value: string): any
+- `destroyNode`: ((node: any) => void) | null
+- `appendChild`(parent: any, newChild: any): void
+- `insertBefore`(parent: any, newChild: any, refChild: any): void
+- `removeChild`(parent: any, oldChild: any): void
+- `selectRootElement`(selectorOrNode: string | any): any
+- `parentNode`(node: any): any
+    
+- `nextSibling`(node: any): any
+- `setAttribute`(el: any, name: string, value: string, namespace?: string | null): void
+- `removeAttribute`(el: any, name: string, namespace?: string | null): void
+- `addClass`(el: any, name: string): void
+- `removeClass`(el: any, name: string): void
+- `setStyle`(el: any, style: string, value: any, flags?: RendererStyleFlags2): void
+- `removeStyle`(el: any, style: string, flags?: RendererStyleFlags2): void
+- `setProperty`(el: any, name: string, value: any): void
+- `setValue`(node: any, value: string): void
+- `listen`(target: 'window' | 'document' | 'body' | any, eventName: string, callback: (event: any) => boolean | void): () => void
